@@ -1,5 +1,3 @@
-# calculator
-
 # Fully Responsive Calculator with 3 Color Themes
 
 [Live Demo Here!](https://zflegle3.github.io/calculator/)
