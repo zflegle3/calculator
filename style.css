@@ -63,10 +63,13 @@ body{
     /* #### Keys */
     --btn-main-a: hsl(30, 25%, 89%);
     --btn-main-b: hsl(28, 16%, 65%);
+    --btn-main-act: hsl(0, 0%, 100%);
     --btn-b-a: hsl(225, 21%, 49%);
     --btn-b-b: hsl(224, 28%, 35%);
+    --btn-b-act: hsl(225, 28%, 69%);
     --btn-c-a: hsl(6, 63%, 50%);
     --btn-c-b: hsl(6, 70%, 34%);
+    --btn-c-act: hsl(6, 100%, 68%);
 
     /* #### Text */
     --font-main: hsl(0, 0%, 100%);
@@ -82,14 +85,16 @@ body.style-1{
         --bg-main: hsl(222, 26%, 31%);
         --bg-sub-a: hsl(223, 31%, 20%);
         --bg-sub-b: hsl(224, 36%, 15%);
-    
+        --btn-main-act: hsl(0, 0%, 100%);
         /* #### Keys */
         --btn-main-a: hsl(30, 25%, 89%);
         --btn-main-b: hsl(28, 16%, 65%);
         --btn-b-a: hsl(225, 21%, 49%);
         --btn-b-b: hsl(224, 28%, 35%);
+        --btn-b-act: hsl(225, 28%, 69%);
         --btn-c-a: hsl(6, 63%, 50%);
         --btn-c-b: hsl(6, 70%, 34%);
+        --btn-c-act: hsl(6, 100%, 68%);
     
         /* #### Text */
         --font-main: hsl(0, 0%, 100%);
@@ -109,10 +114,13 @@ body.style-2{
         /* #### Keys */
         --btn-b-a: hsl(185, 42%, 37%);
         --btn-b-b: hsl(185, 58%, 25%);
+        --btn-b-act: hsl(185, 37%, 54%);
         --btn-main-a: hsl(45, 7%, 89%);
         --btn-main-b: hsl(35, 11%, 61%);
+        --btn-main-act: hsl(0, 0%, 100%);
         --btn-c-a: hsl(25, 98%, 40%);
         --btn-c-b: hsl(6, 70%, 34%);
+        --btn-c-act: hsl(25, 100%, 59%);
     
         /* #### Text */
         --font-main: hsl(60, 10%, 19%);
@@ -132,10 +140,13 @@ body.style-3{
         /* #### Keys */
         --btn-b-a: hsl(281, 89%, 26%);
         --btn-b-b: hsl(285, 91%, 52%);
+        --btn-b-act: hsl(281, 67%, 42%);
         --btn-c-a: hsl(176, 100%, 44%);
         --btn-c-b: hsl(177, 92%, 70%);
+        --btn-c-act: hsl(176, 100%, 70%);
         --btn-main-a: hsl(268, 47%, 21%);
         --btn-main-b: hsl(290, 70%, 36%);
+        --btn-main-act: hsl(268, 35%, 38%);
     
         /* #### Text */
         --font-main: hsl(52, 100%, 62%);
@@ -148,12 +159,14 @@ body.style-3{
 }
 
 .app-container {
+    position: relative;
     width: 100vw;
-    height: 100vh;
+    /* height: 100vh; */
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: var(--bg-main);
+    background-color: var(--bg-main);
 }
 /* 
 - Very dark desaturated blue (main background): hsl(222, 26%, 31%)
@@ -161,12 +174,14 @@ body.style-3{
 - Very dark desaturated blue (screen background): hsl(224, 36%, 15%) */
 
 .calc-container {
+    position: relative;
     /* background: var(--bg-sub-a); */
-    min-width: 42rem;
+    max-width: 44rem;
     /* height: 500px; */
     display: flex;
     flex-direction: column;
-
+    padding: 3rem 2.5rem;
+    flex-grow: 1;
 }
 
 header {
@@ -224,6 +239,10 @@ header h1 {
     background-color: var(--bg-sub-b);
     border-radius: 1rem;
     margin-bottom: 2rem;
+    overflow: hidden;
+    /* white-space: nowrap; */
+    word-wrap: break-word;
+    word-break: break-all;
 
 }
 
@@ -252,21 +271,35 @@ button {
     display: flex;
     align-items: center;
     justify-content: center;
-
+    transition: background-color 0.2s;
 }
 
-button.btn-b {
+
+
+button.btn-del, button.btn-clear {
     font-size: var(--text-m);
     color: var(--font-btn-alt);
     background-color: var(--btn-b-a);
     box-shadow: 0rem 0.25rem 0rem 0rem var(--btn-b-b);
 }
 
-button.btn-c {
+button.btn-equals {
     font-size: var(--text-m);
     color: var(--font-btn-sum);
     background-color: var(--btn-c-a);
     box-shadow: 0rem 0.25rem 0rem 0rem var(--btn-c-b);
+}
+
+button:active { 
+    background-color: var(--btn-main-act);
+}
+
+button.btn-del:active, button.btn-clear:active {
+    background-color: var(--btn-b-act);
+}
+
+button.btn-equals:active {
+    background-color: var(--btn-c-act);
 }
 
 #clear {
@@ -279,14 +312,15 @@ button.btn-c {
 
 .toggle-display {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     padding: 0.25rem;
 }
 .toggle-display p {
-    flex-grow: 1;
-    text-align: center;
+    /* flex-grow: 1; */
+    /* text-align: center; */
     font-size: var(--text-ms);
+    padding: 0rem;
 }
 
 
@@ -301,6 +335,10 @@ button.btn-c {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.toggle:active #select-ball {
+
 }
 
 .style-select {
@@ -323,6 +361,10 @@ button.btn-c {
     overflow: hidden;
 }
 
+.toggle:active #select-ball {
+    background-color: var(--btn-c-act);
+}
+
 #select-ball.style-1 {
     left: 0.4rem;
 }
@@ -334,7 +376,7 @@ button.btn-c {
     left: 4rem;
 }
 
-.btn-cap {
+/* .btn-cap {
     position: relative;
     width: 100%;
     height: 100%;
@@ -343,4 +385,90 @@ button.btn-c {
 
 .btn-cap:hover {
     background-color: var(--shd-hover);
+} */
+
+
+
+@media only screen and (max-width: 600px) {
+
+    .app-container {
+        /* flex-direction: column; */
+        /* justify-content: flex-start;
+        align-items: flex-start; */
+        /* flex-grow: 1; */
+        /* padding: 3rem 2.5rem; */
+
+    }
+
+    .calc-container {
+        /* padding: 3rem 2.5rem; */
+        min-height: 40rem;
+        /* flex-grow: 1; */
+        flex-grow: 1;
+        /* height: 100%; */
+        /* min-width: none; */
+        /* width: 100%; */
+    }
+
+    header {
+        padding-bottom: 3.5rem;
+    }
+
+    header h1 {
+        font-size: var(--text-l);
+    }
+
+    .header-right > p {
+        font-size: 1.2rem;
+        padding-right: 1rem;
+    }
+
+    .toggle {
+        height: 2.5rem;
+        width: 7rem;
+    }
+    
+    #select-ball {
+        height: 1.5rem;
+        width: 1.5rem; 
+        top: 0.5rem;
+        left: 0.5rem;
+    }
+
+    #select-ball.style-1 {
+        left: 0.5rem;
+    }
+    
+    #select-ball.style-2 {
+        left: 2.5rem;
+    }
+    #select-ball.style-3 {
+        left: 5rem;
+    }
+
+    .calc-window {
+        padding: 2.5rem;
+    }
+
+    .calc-btns {
+        flex-grow: 1;
+        padding: 2.5rem;
+        column-gap: 1rem;
+        row-gap: 1.75rem;
+        /* min-height: 40rem; */
+    }
+
+    button {
+        box-shadow: 0rem 0.4rem 0rem 0rem var(--btn-main-b);
+    }
+    
+    button.btn-del, button.btn-clear {
+        box-shadow: 0rem 0.4rem 0rem 0rem var(--btn-b-b);
+        font-size: 2rem;
+    }
+    
+    button.btn-equals  {
+        box-shadow: 0rem 0.4rem 0rem 0rem var(--btn-c-b);
+    }
+
 }
