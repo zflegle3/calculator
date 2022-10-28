@@ -1,6 +1,8 @@
-# Fully Responsive Calculator with 3 Color Themes
+# Fully Responsive Calculator App with 3 Color Themes
 
 [Live Demo Here!](https://zflegle3.github.io/calculator/)
+
+[Compare Solution with Design Here!](https://www.frontendmentor.io/solutions/calculator-with-3-color-themes-6w3tqmh5ZZ)
 
 ## Summary
 
@@ -9,7 +11,7 @@ This project was originally built as part of the Odin Project Foundations curric
 ## Features 
 * Three Color themes available using theme slider
 * Users are able to see active states for interactive elements (links & buttons)
-* Responsive component matches desktop and mobile designs 
+* Responsive style matches the objective design on desktop and mobile screens
 
 
 ## Technologies
